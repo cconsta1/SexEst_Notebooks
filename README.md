@@ -106,12 +106,15 @@ If you use these notebooks or models, please cite:
 > Constantinou, C., et al. (2023). SexEst: A machine learning web application for skeletal sex estimation. *International Journal of Osteoarchaeology*. https://doi.org/10.1002/oa.3109
 
 ```bibtex
-@article{constantinou2023sexest,
-  title={SexEst: A machine learning web application for skeletal sex estimation},
-  author={Constantinou, Christos and others},
+@article{constantinou2022sexest,
+  title={SexEst: An open access web application for metric skeletal sex estimation},
+  author={Constantinou, Chrysovalantis and Nikita, Efthymia},
   journal={International Journal of Osteoarchaeology},
-  year={2023},
-  doi={10.1002/oa.3109}
+  volume={32},
+  number={4},
+  pages={832--844},
+  year={2022},
+  publisher={Wiley Online Library}
 }
 ```
 
