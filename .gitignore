@@ -1,3 +1,39 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+.python-version
+
+# Virtual environments
+.venv/
+env/
+venv/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# OS
+.DS_Store
+
+# Pytest
+.pytest_cache/
+
+# IDEs
+.vscode/
+.idea/
+
+# Notebook outputs
+*.nbconvert.ipynb
+
+# Model and large artifacts
+models_*/
+*.pkl
+*.joblib
+
+# Don't commit raw datasets or backups
+datasets/*.csv
+*backup*.zip
+*.zip
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
 
