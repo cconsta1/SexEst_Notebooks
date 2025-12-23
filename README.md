@@ -1,46 +1,57 @@
-# Data analysis notebooks
+# SexEst_Notebooks — Model Training Notebooks
 
-This repository contains the Jupyter notebooks used to train and evaluate the models packaged in the SexEst web application (models in the SexEst repository). The notebooks reproduce the data processing, feature selection and model-training pipelines used in the paper: "SexEst — Skeletal sex estimation using machine learning" (see citation below).
+This repository contains the Jupyter notebooks used to train and evaluate the machine learning models deployed in the [SexEst web application](http://sexest.cyi.ac.cy/). The notebooks reproduce the data processing, feature selection, and model-training pipelines described in the associated paper.
 
-Key contents
-- **Notebooks:** `howell_dataset_analysis.ipynb`, `goldman_dataset_analysis.ipynb` — these notebooks load the public datasets (Howells craniometric; Goldman osteometric), perform cleaning and preprocessing, run model experiments (XGBoost, LightGBM, LDA and related comparisons), and export model metadata/artifacts used in the SexEst app.
-- **datasets/** — placeholder directory where the CSV dataset files should be placed (see `datasets/README.md` and `DATA_AVAILABILITY.md` for provenance and download instructions).
+## Notebooks
 
-What the notebooks do (short)
-- Load raw CSVs for the Howells and Goldman datasets.
-- Clean and harmonize column names and missing values.
-- Select measurement sets used for modelling (cranial vs osteometric feature sets).
-- Run cross-validation experiments and hyperparameter tuning for candidate classifiers (XGBoost, LightGBM, LDA and others as described in the paper).
-- Generate model artifacts (model metadata and export files) and evaluation reports used by the Streamlit app in the main `SexEst` project.
+| Notebook | Dataset | Description |
+|----------|---------|-------------|
+| `howell_dataset_analysis.ipynb` | Howells craniometric | Cranial measurements; trains classifiers for sex estimation from skull dimensions |
+| `goldman_dataset_analysis.ipynb` | Goldman osteometric | Postcranial measurements; trains classifiers for sex estimation from long bones and pelvis |
 
-Data required
-- The notebooks require the original CSV versions of the Goldman and Howells datasets. These files must be downloaded from the official source (see `DATA_AVAILABILITY.md`) and placed inside the `datasets/` directory with the expected names:
+## What the notebooks do
 
-- `datasets/Howell.csv`
-- `datasets/HowellTest.csv`
-- `datasets/Goldman.csv`
+1. Load raw CSV data (Howells / Goldman datasets)
+2. Clean and harmonize column names and missing values
+3. Select measurement subsets for modelling
+4. Run cross-validation experiments and hyperparameter tuning (XGBoost, LightGBM, LDA, and others)
+5. Export trained model artifacts used by the SexEst Streamlit app
 
-Example load commands used in the notebooks:
+## Data required
 
-- `raw_data_howell = pd.read_csv("datasets/Howell.csv", header = 0, encoding= 'unicode_escape')`
-- `raw_data_howell_test = pd.read_csv("datasets/HowellTest.csv", header = 0, encoding= 'unicode_escape')`
-- `raw_data_goldman = pd.read_csv("datasets/Goldman.csv", header = 0, encoding= 'unicode_escape')`
+The notebooks require the original CSV datasets. **These files are NOT included** due to redistribution restrictions. Download them from the official source and place in `datasets/`:
 
-Important: Do not commit or redistribute these dataset files unless you have explicit permission from the dataset owners. See `DATA_AVAILABILITY.md` for provenance and citation guidance.
+| Filename | Source |
+|----------|--------|
+| `Howell.csv` | [Auerbach DATA page](https://web.utk.edu/~auerbach/DATA.htm) — Howells dataset |
+| `HowellTest.csv` | Same as above |
+| `Goldman.csv` | [Auerbach DATA page](https://web.utk.edu/~auerbach/DATA.htm) — Goldman dataset |
 
-Citation & links
-- Paper / DOI: https://doi.org/10.1002/oa.3109 — please cite this paper if you use the models or notebooks in published work.
-- Live demo (SexEst web app): http://sexest.cyi.ac.cy/
-- Model training notebooks (this repository): https://github.com/cconsta1/SexEst_Notebooks.git
-- Main application (pre-trained models & Streamlit UI): https://github.com/cconsta1/SexEst.git
+See [`DATA_AVAILABILITY.md`](DATA_AVAILABILITY.md) for full provenance, citation guidance, and redistribution policy.
 
-Reproducing the app models
-If you plan to re-run experiments and retrain models, follow the steps in each notebook. Keep in mind: training may require additional packages (see the SexEst repository `requirements.txt`), and model exports in `models_*` directories can be large.
+### Example load commands
 
-Environment
-- Using Anaconda or a virtual environment is recommended. Install required packages with `pip` or `conda` as needed.
+```python
+raw_data_howell = pd.read_csv("datasets/Howell.csv", header=0, encoding='unicode_escape')
+raw_data_howell_test = pd.read_csv("datasets/HowellTest.csv", header=0, encoding='unicode_escape')
+raw_data_goldman = pd.read_csv("datasets/Goldman.csv", header=0, encoding='unicode_escape')
+```
 
-Recommended housekeeping
-- Add a `.gitignore` to avoid committing virtual environments, caches, notebook checkpoints, and large model binaries. A suggested `.gitignore` has been added to this repository.
+## Citation & Links
 
-If you want me to also run or validate the notebooks locally (execute them, produce HTML/HTML reports, or export model artifacts), tell me which notebook to run and I will prepare an execution plan.
+| Resource | Link |
+|----------|------|
+| Paper / DOI | https://doi.org/10.1002/oa.3109 |
+| Live demo | http://sexest.cyi.ac.cy/ |
+| Main app repo | https://github.com/cconsta1/SexEst.git |
+| Training notebooks (this repo) | https://github.com/cconsta1/SexEst_Notebooks.git |
+
+**Please cite the paper** if you use these notebooks or models in published work.
+
+## Environment
+
+Using Anaconda or a Python virtual environment is recommended. Install dependencies with `pip` or `conda`. The main SexEst repository contains a `requirements.txt` with the packages needed to run the models.
+
+## License
+
+This repository is licensed under the Apache License 2.0. See [`LICENSE`](LICENSE) for details.
